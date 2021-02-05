@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble benefit.</title>
+</head>
+<body>
+    <h1>Event bubble benefit</h1>
+    <div id="container">
+        <ul id="parent">
+            <li class="child">Lorem, ipsum.</li>
+            <li class="child">Hic, eum?</li>
+            <li class="child">Quas, inventore.</li>
+            <li class="child">Placeat, temporibus.</li>
+            <li class="child">Atque, temporibus!</li>
+        </ul>
+        <button id="add-item">Add item</button>
+    </div>
+    <script>
+        // remove item using item class for test  some error 
+        // const items = document.getElementsByClassName('child');
+        // for (let i = 0; i < items.length; i++) {
+        //     const item = items[i];
+        //     item.addEventListener('click', function (event) {
+        //         event.target.parentNode.removeChild(event.target);                
+        //     })
+        // }
+
+        // add new item
+        document.getElementById('add-item').addEventListener('click', function(event){
+            const parentItem = document.getElementById('parent');
+            const newItem = document.createElement('li');
+            newItem.setAttribute('class', 'child');
+            newItem.innerText = 'New created brand';
+            parentItem.appendChild(newItem); 
+        })
+
+        //remove item using parent bubble
+        document.getElementById('parent').addEventListener('click', function(event){
+           event.target.parentNode.removeChild(event.target);
+        })
+    </script>
+</body>
+</html>
